@@ -1,0 +1,4 @@
+include ':app'
+rootProject.name = "Light"
+include ':openCVLibrary3412'
+include ':openCVLibrary3412'
