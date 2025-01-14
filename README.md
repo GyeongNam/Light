@@ -1,165 +1,83 @@
-## Light
-스마트폰 라이트로 모스부호 보내기<br>
+# Light - 스마트폰 라이트로 모스부호 보내기
 
+**Light**는 스마트폰 라이트를 활용하여 모스부호 신호를 송신하고, OpenCV를 이용해 모스부호를 수신 및 해석할 수 있는 개인 프로젝트입니다.
 
-## 개발 환경
+---
 
-- Android 
-- Kotlin
-- OpenCV
+## 🗂 목차
+- [프로젝트 개요](#프로젝트-개요)
+- [주요 기능](#주요-기능)
+- [디자인 및 사용 방법](#디자인-및-사용-방법)
+- [사용 기술 및 특징](#사용-기술-및-특징)
+- [프로젝트 목적](#프로젝트-목적)
+
+---
+
+## 📖 프로젝트 개요
+**Light** 프로젝트는 스마트폰의 라이트와 카메라를 사용하여 모스부호를 송수신하는 애플리케이션입니다.
+- **송신**: 사용자가 입력한 텍스트를 모스부호로 변환하여 스마트폰 라이트로 송신.
+- **수신**: 스마트폰 카메라로 빛의 패턴을 감지하고 OpenCV로 분석하여 텍스트로 해석.
+
+이 프로젝트는 Android 앱 개발과 OpenCV 활용을 통해 이미지 처리 및 신호 분석을 학습하기 위해 제작되었습니다.
+
+---
+
+## ⚙️ 개발 환경
+![Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)  
+![Kotlin](https://img.shields.io/badge/Language-Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)  
+![C++](https://img.shields.io/badge/Language-C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)  
+![OpenCV](https://img.shields.io/badge/Library-OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
+
+---
+
+## 주요 기능
+
+### 1. 신호 송신
+- 사용자가 입력한 텍스트를 모스부호로 변환.
+- 스마트폰 플래시를 사용하여 점(1)과 선(2)으로 신호를 보냅니다.
+
+### 2. 신호 수신 및 해석
+- 스마트폰 카메라로 라이트 신호를 감지.
+- OpenCV를 이용해 라이트의 깜빡임을 분석하고, 모스부호를 해석하여 텍스트로 변환합니다.
+
+---
 
 ## 디자인 및 사용 방법
 
-ICON:
-
+### 아이콘
 ![ic_launcher_light](https://user-images.githubusercontent.com/63902992/143733539-1766f2cb-320a-46a3-92e7-cfb07d13e9e4.png)
 
-
-MAIN:
-
-
+### 메인 화면
+앱 실행 후 메인 화면에서 송신(SEND) 또는 수신(RECEIVE) 기능을 선택할 수 있습니다.  
 ![image](https://user-images.githubusercontent.com/63902992/143733732-e6ff336b-7ae7-413f-8801-795352b0ac8d.png)
 
-SEND:
+### 송신 (SEND)
+1. 모스부호 형식을 선택한 후, 텍스트를 입력합니다.
+2. `Send` 버튼을 클릭하여 라이트 신호를 전송합니다.  
+   ![image](https://user-images.githubusercontent.com/63902992/143733756-229b0026-48a3-4450-ab50-be4fdbef9c09.png)
 
-빛을 모스부호 형식을으로 보낼 방법을 선택한후 텍스트를 입력하고 'send'버튼 클릭.
+### 수신 (RECEIVE)
+1. `Analysis Start` 버튼을 클릭하여 라이트 신호 수신을 시작합니다.
+2. 중앙의 노란 사각형 영역에 들어오는 빛을 분석합니다. (빛이 감지되면 오른쪽 상단에 상태 표시)
+3. 신호가 끝나면 `Analysis End` 버튼을 클릭하여 해석을 종료하고, 결과를 확인합니다.  
+   ![image](https://user-images.githubusercontent.com/63902992/143733826-8c70f59e-e1a2-45c2-a905-5e19c03ba4ff.png)  
+   ![image](https://user-images.githubusercontent.com/63902992/143733881-59992a1d-a069-422e-89ec-8dd70e7ba6c6.png)
 
-![image](https://user-images.githubusercontent.com/63902992/143733756-229b0026-48a3-4450-ab50-be4fdbef9c09.png)
+---
 
-RECEIVE:
+## 사용 기술 및 특징
 
-Analysis Start 버튼 클릭시 가운데 노랑색 사각형안에 빛이 들어오면 1로 판단, <br>
-우측상단에 빛으로 인식되는지 안되는지 노란색 영역 따로 표시
+1. **Kotlin**
+    - Android UI 설계 및 앱 로직 구현.
 
-![image](https://user-images.githubusercontent.com/63902992/143733826-8c70f59e-e1a2-45c2-a905-5e19c03ba4ff.png)
+2. **OpenCV**
+    - 카메라 이미지 처리 및 빛 감지.
+    - 모스부호 수신 분석에 사용.
 
-신호가 끝나면 Analysis End 버튼을 클릭.
+3. **C++ (JNI)**
+    - OpenCV와의 연동 및 고성능 이미지 처리.
 
-해석으로 예상 단어 및 문장을 보여준다.
+---
 
-![image](https://user-images.githubusercontent.com/63902992/143733881-59992a1d-a069-422e-89ec-8dd70e7ba6c6.png)
-
-## 개발 내용
-
-신호 발송
-
-```java
-var handler = Handler{
-    if (timebut == 0){
-        but_push1.setEnabled(true)
-        but_push1.setText("Send")
-    }
-    true
-}
-thread {
-    timebut = 1
-    for (i in restring.indices) {
-        if (restring[i].equals('1')) {    // 점
-            torch.flashOn()
-            Thread.sleep(1000)
-        }
-        if (restring[i].equals('2')) {    // 선
-            torch.flashOn()
-            Thread.sleep(2000)
-        }
-        if (restring[i].equals('0')) {    // 없음
-            torch.flashOff()
-            Thread.sleep(1000)
-        }
-        torch.flashOff()
-        Thread.sleep(500)
-    }
-    timebut = 0
-    handler.obtainMessage().sendToTarget()
-}
-
-```
-openCV 설정
-```cpp
-extern "C"
-JNIEXPORT void JNICALL
-Java_com_example_light_pull_ConvertRGBtoGray(JNIEnv *env, jobject thiz, jlong matAddrInput, jlong matAddrResult) {
-    result_stirng = "0";
-    Mat &matInput = *(Mat *)matAddrInput;
-    Mat &matResult = *(Mat *)matAddrResult;
-    Mat Intmp = *( Mat *) new Mat();
-    Mat Retmp = *( Mat *) new Mat();
-    Mat Roi = *( Mat *) new Mat();
-
-    cvtColor(matInput, Intmp,COLOR_RGB2GRAY);
-    cvtColor(matInput, matResult,CV_CAP_MODE_RGB);
-
-    Roi = Intmp(Rect(matResult.size().width/2-50, matResult.size().height/2-50, 100, 100));
-
-    threshold(Roi , Retmp , 250.0 , 255 , CV_THRESH_BINARY );
-    GaussianBlur(Retmp, Retmp, Size(5, 5), 0);
-    inRange(Retmp, Scalar(255.0, 255.0, 200.0), Scalar(255.0, 255.0, 255.0), Retmp);
-
-
-    vector<vector<Point>> contours;
-    vector<Vec4i> hierarchy;
-
-    findContours(Retmp, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE,Point(0,0));
-
-    rectangle(matResult, Rect(matResult.size().width/2-50, matResult.size().height/2-50, 100, 100), Scalar(255, 255, 200),20, 8, 0);
-    for (int i = 0; i< contours.size(); i++)
-    {
-        if(contourArea(contours[i]) > 10) {
-            int x = (moments(contours[i]).m10 / moments(contours[i]).m00);
-            int y = (moments(contours[i]).m01 / moments(contours[i]).m00);
-
-            circle(matResult, Point(x, y), 1, Scalar(255, 0, 255), 10, 8, 0);
-            drawContours(matResult, contours, i, Scalar(0, 255, 255), 3, 8, hierarchy, 0, Point());
-            result_stirng = "1";
-            continue;
-        }
-    }
-}
-```
-
-신호 해석
-
-```java
-fun Alphabet(astring: String): String{
-        var a = astring.replace("1200", "a")
-        var b = ""
-        a = a.replace("2111", "b")
-        a = a.replace("2121", "c")
-        a = a.replace("2110", "d")
-        a = a.replace("1000", "e")
-        a = a.replace("1121", "f")
-        a = a.replace("2210", "g")
-        a = a.replace("1111", "h")
-        a = a.replace("1100", "i")
-        a = a.replace("1222", "j")
-        a = a.replace("2120", "k")
-        a = a.replace("1211", "l")
-        a = a.replace("2200", "m")
-        a = a.replace("2100", "n")
-        a = a.replace("2220", "o")
-        a = a.replace("1221", "p")
-        a = a.replace("2212", "q")
-        a = a.replace("1210", "r")
-        a = a.replace("1110", "s")
-        a = a.replace("2000", "t")
-        a = a.replace("1120", "u")
-        a = a.replace("1112", "v")
-        a = a.replace("1220", "w")
-        a = a.replace("2112", "x")
-        a = a.replace("2122", "y")
-        a = a.replace("2211", "z")
-        a = a.replace("1001", " ")
-        a = a.replace(",", "")
-        for(i in a.indices){
-            if(a[i] == '0'){
-                continue
-            }else if (a[i] == '1'){
-                continue
-            }else if (a[i] == '2'){
-                continue
-            }
-            b += a[i]
-        }
-        return b
-    }
-```
+## 프로젝트 목적
+Light 프로젝트는 스마트폰의 라이트와 카메라를 활용하여 모스부호 송신 및 수신 기능을 구현하며, OpenCV와 Kotlin의 통합 활용 방법을 익히고자 제작한 개인 프로젝트입니다.
